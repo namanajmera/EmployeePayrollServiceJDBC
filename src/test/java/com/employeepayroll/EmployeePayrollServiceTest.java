@@ -11,9 +11,9 @@ public class EmployeePayrollServiceTest {
     @Test
     public void given3EmployeesWhenWrittenToFileShouldMatchNumberOfEmployeeEntries() {
         EmployeePayrollData[] arrayOfEmployees = {
-                new EmployeePayrollData(1, "Aditya Verma", 800000.0),
-                new EmployeePayrollData(2, "Akhil Singh", 850000.0),
-                new EmployeePayrollData(3, "Anamika Bhatt", 900000.0) };
+                new EmployeePayrollData(1, "Naman Ajmera", 800000.0),
+                new EmployeePayrollData(2, "Ankit Gupta", 850000.0),
+                new EmployeePayrollData(3, "Aditya Verma", 900000.0) };
 
         EmployeePayrollService payrollServiceObject = new EmployeePayrollService(Arrays.asList(arrayOfEmployees));
         payrollServiceObject.writeEmployeeData(EmployeePayrollService.IOService.FILE_IO);
