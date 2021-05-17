@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="com.employeepayroll.EmployeePayrollServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-15T10:36:26" hostname="HACKERNAMAN" time="0.054">
+||||||| 6831246
+<testsuite name="com.employeepayroll.EmployeePayrollServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-15T10:34:28" hostname="HACKERNAMAN" time="0.046">
+=======
+<testsuite name="com.employeepayroll.EmployeePayrollServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-17T16:12:17" hostname="HACKERNAMAN" time="0.062">
+>>>>>>> UC1-CreatAJDBCConnection
   <properties/>
+<<<<<<< HEAD
   <testcase name="given3EmployeesWhenWrittenToFileShouldMatchNumberOfEmployeeEntries()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.05"/>
   <testcase name="given3EmployeesWhenReadFromFileShouldMatchNumberOfEmployeeEntries()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.003"/>
   <system-out><![CDATA[Id : 1	Name : Naman Ajmera	Salary : 800000.0
 Id : 2	Name : Ankit Gupta	Salary : 850000.0
 Id : 3	Name : Aditya Verma	Salary : 900000.0
+||||||| 6831246
+  <testcase name="given3EmployeesWhenWrittenToFileShouldMatchNumberOfEmployeeEntries()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.042"/>
+  <testcase name="given3EmployeesWhenReadFromFileShouldMatchNumberOfEmployeeEntries()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.003"/>
+  <system-out><![CDATA[Id : 1	Name : Aditya Verma	Salary : 800000.0
+Id : 2	Name : Akhil Singh	Salary : 850000.0
+Id : 3	Name : Anamika Bhatt	Salary : 900000.0
+=======
+  <testcase name="given3EmployeesWhenWrittenToFileShouldMatchNumberOfEmployeeEntries()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.058"/>
+  <testcase name="given3EmployeesWhenReadFromFileShouldMatchNumberOfEmployeeEntries()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.002"/>
+  <system-out><![CDATA[Id : 1	Name : Naman Ajmera	Salary : 800000.0
+Id : 2	Name : Ankita Gupta	Salary : 850000.0
+Id : 3	Name : Aditya Verma	Salary : 900000.0
+>>>>>>> UC1-CreatAJDBCConnection
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
