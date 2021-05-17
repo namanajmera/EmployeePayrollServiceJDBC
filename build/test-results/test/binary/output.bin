@@ -1,0 +1,5 @@
+aEmployeePayrollData{employeeId=1, employeeName='Naman Ajmera', salary=800000.0, startDate=null}
+`EmployeePayrollData{employeeId=2, employeeName='Ankit Gupta', salary=850000.0, startDate=null}
+aEmployeePayrollData{employeeId=3, employeeName='Aditya Verma', salary=900000.0, startDate=null}
+DConnecting to database:jdbc:mysql://localhost:3307/payroll_service
+JConnection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@75565601

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.employeepayroll.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-17T09:54:44" hostname="HACKERNAMAN" time="0.037">
+<testsuite name="com.employeepayroll.EmployeePayrollServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-17T16:59:07" hostname="HACKERNAMAN" time="0.376">
   <properties/>
-  <testcase name="given3EmployeesWhenReadFromFileShouldMatchNumberOfEmployeeEntries()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.037"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="given3EmployeesWhenWrittenToFileShouldMatchNumberOfEmployeeEntries()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.034"/>
+  <testcase name="givenEmployeePayrollInDB_WhenRetrieved_ShouldMatchEmployeeCount()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.342"/>
+  <system-out><![CDATA[EmployeePayrollData{employeeId=1, employeeName='Naman Ajmera', salary=800000.0, startDate=null}
+EmployeePayrollData{employeeId=2, employeeName='Ankit Gupta', salary=850000.0, startDate=null}
+EmployeePayrollData{employeeId=3, employeeName='Aditya Verma', salary=900000.0, startDate=null}
+Connecting to database:jdbc:mysql://localhost:3307/payroll_service
+Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@75565601
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
