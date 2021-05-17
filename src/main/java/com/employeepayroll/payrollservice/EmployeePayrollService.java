@@ -1,5 +1,6 @@
 package com.employeepayroll.payrollservice;
 
+import com.employeepayroll.ioservice.EmployeePayrollDBService;
 import com.employeepayroll.ioservice.FileIOService;
 import com.employeepayroll.modal.EmployeePayrollData;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
+
     public enum IOService {
         CONSOLE_IO, FILE_IO, DB_IO, REST_IO
     }
@@ -26,6 +28,13 @@ public class EmployeePayrollService {
     public int sizeOfEmployeeList() {
         return this.employeeList.size();
     }
+
+    public List<EmployeePayrollData> readEmployeePayrollData(IOService ioService) {
+        if (ioService.equals(IOService.DB_IO))
+            this.employeeList = new EmployeePayrollDBService().readData();
+        return this.employeeList;
+    }
+
 
     public void readEmployeeData(IOService ioType) {
         if (ioType.equals(IOService.CONSOLE_IO)) {
