@@ -49,6 +49,13 @@ public class EmployeePayrollService {
         return this.employeePayrollDataList;
     }
 
+    public void addEmployeePayrollDetail(String name, double salary, LocalDate date, char gender) throws DBException {
+        if (this.getEmployeePayrollData(name)==null){
+            this.employeePayrollDataList.add(employeePayrollDBService.addEmployeeToPayroll(name,salary,date,gender));
+        }
+
+    }
+
     public Map<String, Double> averageSalaryByGender(IOService ioService) throws DBException {
         if (ioService.equals(IOService.DB_IO))
             return employeePayrollDBService.findAvgSalaryByGender();

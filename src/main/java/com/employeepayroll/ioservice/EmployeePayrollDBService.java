@@ -63,6 +63,27 @@ public class EmployeePayrollDBService {
         return employeePayrollDataList;
     }
 
+    public EmployeePayrollData addEmployeeToPayroll(String name, double salary, LocalDate date, char gender) throws DBException {
+        int employeeId = -1;
+        String sql=String.format("insert into employee_payroll (name,gender,salary,start) " +
+                                    "values('%s','%s',%.2f,'%s');",name,gender,salary,Date.valueOf(date));
+        EmployeePayrollData employeePayrollData;
+        try (Connection connection=this.getConnection()){
+            Statement statement=connection.createStatement();
+            int rowAffected=statement.executeUpdate(sql,statement.RETURN_GENERATED_KEYS);
+            if (rowAffected==1){
+                ResultSet resultSet=statement.getGeneratedKeys();
+                if (resultSet.next()){
+                    employeeId=resultSet.getInt(1);
+                }
+            }
+            employeePayrollData=new EmployeePayrollData(employeeId,name,salary,date,gender);
+        } catch (SQLException e) {
+            throw new DBException("Cannot establish connection", DBException.ExceptionType.CONNECTION_FAIL);
+        }
+        return employeePayrollData;
+    }
+
     public Map<String, Double> findAvgSalaryByGender() throws DBException {
         String sql="select gender,avg(salary) as avg_salary from employee_payroll group by gender;";
         Map<String,Double> genderToAverageSalary=new HashMap<>();
