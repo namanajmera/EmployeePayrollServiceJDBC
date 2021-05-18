@@ -48,6 +48,19 @@ public class EmployeePayrollDBService {
         return employeePayrollDataList;
     }
 
+    public List<EmployeePayrollData> reteriveDate(LocalDate startDate, LocalDate endDate) throws DBException {
+        String sql=String.format("select * from employee_payroll where start between '%s' and '%s';",startDate,endDate);
+        List<EmployeePayrollData> employeePayrollDataList=new ArrayList<>();
+        try(Connection connection=this.getConnection()){
+            Statement statement=connection.createStatement();
+            ResultSet resultSet=statement.executeQuery(sql);
+            employeePayrollDataList=this.employeePayrollData(resultSet);
+        } catch (SQLException throwables) {
+            throw new DBException("Connection is failed", DBException.ExceptionType.CONNECTION_FAIL);
+        }
+        return employeePayrollDataList;
+    }
+
     public List<EmployeePayrollData> getEmployeePayrollData(String name) throws DBException {
         List<EmployeePayrollData> employeePayrollDataList=null;
         if (this.employeePayrollDataStatement==null)
@@ -102,6 +115,4 @@ public class EmployeePayrollDBService {
         }
         return 0;
     }
-
-
 }

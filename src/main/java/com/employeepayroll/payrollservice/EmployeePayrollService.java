@@ -6,11 +6,13 @@ import com.employeepayroll.ioservice.EmployeePayrollDBService;
 import com.employeepayroll.ioservice.FileIOService;
 import com.employeepayroll.modal.EmployeePayrollData;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
+
     public enum IOService {
         CONSOLE_IO, FILE_IO, DB_IO, REST_IO
     }
@@ -36,6 +38,13 @@ public class EmployeePayrollService {
     public List<EmployeePayrollData> readEmployeePayrollData(IOService ioService) {
         if (ioService.equals(IOService.DB_IO))
             this.employeePayrollDataList =employeePayrollDBService.readData();
+        return this.employeePayrollDataList;
+    }
+
+
+    public List<EmployeePayrollData> readEmployeeDataWithGivenDateRange(IOService ioService, LocalDate startDate, LocalDate endDate) throws DBException {
+        if (ioService.equals(IOService.DB_IO))
+            this.employeePayrollDataList=employeePayrollDBService.reteriveDate(startDate,endDate);
         return this.employeePayrollDataList;
     }
 

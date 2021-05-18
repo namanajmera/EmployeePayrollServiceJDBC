@@ -1,6 +1,15 @@
-DConnecting to database:jdbc:mysql://localhost:3307/payroll_service
-IConnection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@46c0233
-DConnecting to database:jdbc:mysql://localhost:3307/payroll_service
-JConnection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@6b4bde93
-DConnecting to database:jdbc:mysql://localhost:3307/payroll_service
-JConnection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@20bfd0ac
+aEmployeePayrollData{employeeId=1, employeeName='Naman Ajmera', salary=800000.0, startDate=null}
+`EmployeePayrollData{employeeId=2, employeeName='Ankit Gupta', salary=850000.0, startDate=null}
+aEmployeePayrollData{employeeId=3, employeeName='Aditya Verma', salary=900000.0, startDate=null}
+DConnecting to database:jdbc:mysql://localhost:3307/payroll_service
+JConnection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@7dcf0a61
+DConnecting to database:jdbc:mysql://localhost:3307/payroll_service
+JConnection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@704dc3c0
+DConnecting to database:jdbc:mysql://localhost:3307/payroll_service
+JConnection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@5c5fe244
+DConnecting to database:jdbc:mysql://localhost:3307/payroll_service
+JConnection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@6c82d55d
+DConnecting to database:jdbc:mysql://localhost:3307/payroll_service
+JConnection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@14e4336e
+DConnecting to database:jdbc:mysql://localhost:3307/payroll_service
+JConnection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@40a21f56

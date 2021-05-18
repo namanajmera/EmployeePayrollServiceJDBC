@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.employeepayroll.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-18T05:44:09" hostname="HACKERNAMAN" time="0.582">
+<testsuite name="com.employeepayroll.EmployeePayrollServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-18T06:04:07" hostname="HACKERNAMAN" time="0.577">
   <properties/>
-  <testcase name="givenNewSalaryForEmployee_WhenUpdated_ShouldMatch()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.582"/>
-  <system-out><![CDATA[Connecting to database:jdbc:mysql://localhost:3307/payroll_service
-Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@46c0233
+  <testcase name="given3EmployeesWhenWrittenToFileShouldMatchNumberOfEmployeeEntries()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.058"/>
+  <testcase name="givenEmployeePayrollInDB_WhenReterivedEmployeeByGivenRange_ShouldReturnEmployeeCount()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.37"/>
+  <testcase name="givenNewSalaryForEmployee_WhenUpdated_ShouldMatch()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.115"/>
+  <testcase name="givenEmployeePayrollInDB_WhenRetrieved_ShouldMatchEmployeeCount()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.031"/>
+  <system-out><![CDATA[EmployeePayrollData{employeeId=1, employeeName='Naman Ajmera', salary=800000.0, startDate=null}
+EmployeePayrollData{employeeId=2, employeeName='Ankit Gupta', salary=850000.0, startDate=null}
+EmployeePayrollData{employeeId=3, employeeName='Aditya Verma', salary=900000.0, startDate=null}
 Connecting to database:jdbc:mysql://localhost:3307/payroll_service
-Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@6b4bde93
+Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@7dcf0a61
 Connecting to database:jdbc:mysql://localhost:3307/payroll_service
-Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@20bfd0ac
+Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@704dc3c0
+Connecting to database:jdbc:mysql://localhost:3307/payroll_service
+Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@5c5fe244
+Connecting to database:jdbc:mysql://localhost:3307/payroll_service
+Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@6c82d55d
+Connecting to database:jdbc:mysql://localhost:3307/payroll_service
+Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@14e4336e
+Connecting to database:jdbc:mysql://localhost:3307/payroll_service
+Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@40a21f56
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
