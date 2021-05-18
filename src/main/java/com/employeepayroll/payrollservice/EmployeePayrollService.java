@@ -9,9 +9,11 @@ import com.employeepayroll.modal.EmployeePayrollData;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
+
     public enum IOService {
         CONSOLE_IO, FILE_IO, DB_IO, REST_IO
     }
@@ -45,6 +47,12 @@ public class EmployeePayrollService {
         if (ioService.equals(IOService.DB_IO))
             this.employeePayrollDataList=employeePayrollDBService.reteriveDate(startDate,endDate);
         return this.employeePayrollDataList;
+    }
+
+    public Map<String, Double> averageSalaryByGender(IOService ioService) throws DBException {
+        if (ioService.equals(IOService.DB_IO))
+            return employeePayrollDBService.findAvgSalaryByGender();
+        return null;
     }
 
     public int readEmployeeDataWtihGivenSalary(double salary) throws DBException {

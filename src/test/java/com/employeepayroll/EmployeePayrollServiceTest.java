@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static com.employeepayroll.payrollservice.EmployeePayrollService.IOService.DB_IO;
 
@@ -61,5 +62,14 @@ public class EmployeePayrollServiceTest {
         double salary=3000000.00;
         int result=employeePayrollService.readEmployeeDataWtihGivenSalary(salary);
         Assertions.assertEquals(3,result);
+    }
+
+    @Test
+    public void givenPayrollData_WhenAverageSalaryReterivedByGender_Should_ReturnProperValue() throws DBException {
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        employeePayrollService.readEmployeePayrollData(DB_IO);
+        Map<String,Double> averageSalaryByGender=employeePayrollService.averageSalaryByGender(DB_IO);
+        Assertions.assertTrue(averageSalaryByGender.get("M").equals(2000000.00) &&
+                averageSalaryByGender.get("F").equals(3000000.00));
     }
 }
