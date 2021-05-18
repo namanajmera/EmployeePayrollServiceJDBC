@@ -17,12 +17,15 @@ public class EmployeePayrollService {
 
     public static final Scanner SC = new Scanner(System.in);
     private List<EmployeePayrollData> employeePayrollDataList;
+    private EmployeePayrollDBService employeePayrollDBService;
 
     public EmployeePayrollService() {
+        employeePayrollDBService=EmployeePayrollDBService.getInstance();
         this.employeePayrollDataList = new ArrayList<EmployeePayrollData>();
     }
 
     public EmployeePayrollService(List<EmployeePayrollData> employeeList) {
+        this();
         this.employeePayrollDataList = employeeList;
     }
 
@@ -32,12 +35,12 @@ public class EmployeePayrollService {
 
     public List<EmployeePayrollData> readEmployeePayrollData(IOService ioService) {
         if (ioService.equals(IOService.DB_IO))
-            this.employeePayrollDataList = new EmployeePayrollDBService().readData();
+            this.employeePayrollDataList =employeePayrollDBService.readData();
         return this.employeePayrollDataList;
     }
 
     public void updateEmployeeSalary(String name, double salary) {
-        int result=new EmployeePayrollDBService().updateEmployeeData(name,salary);
+        int result=employeePayrollDBService.updateEmployeeData(name,salary);
         if(result==0) {
             try {
                 throw new SQLUpdateFailedException("Query is failed.");
@@ -58,7 +61,7 @@ public class EmployeePayrollService {
     }
 
     public boolean checkEmployeePayrollInSyncWithDB(String name) throws DBException {
-        List<EmployeePayrollData> employeePayrollDataList=new EmployeePayrollDBService().getEmployeePayrollData(name);
+        List<EmployeePayrollData> employeePayrollDataList=employeePayrollDBService.getEmployeePayrollData(name);
         return employeePayrollDataList.get(0).equals(getEmployeePayrollData(name));
     }
 
