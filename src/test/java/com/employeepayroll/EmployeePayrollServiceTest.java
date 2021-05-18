@@ -53,4 +53,13 @@ public class EmployeePayrollServiceTest {
                 employeePayrollService.readEmployeeDataWithGivenDateRange(DB_IO,startDate,endDate);
         Assertions.assertEquals(2,employeePayrollDataList.size());
     }
+
+    @Test
+    public void givenEmployeePayrollInDB_WhereCOuntBySalary_ShouldReturnEmployeeCount() throws DBException {
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        employeePayrollService.readEmployeePayrollData(DB_IO);
+        double salary=3000000.00;
+        int result=employeePayrollService.readEmployeeDataWtihGivenSalary(salary);
+        Assertions.assertEquals(3,result);
+    }
 }

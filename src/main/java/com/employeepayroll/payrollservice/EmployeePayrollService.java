@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
-
     public enum IOService {
         CONSOLE_IO, FILE_IO, DB_IO, REST_IO
     }
@@ -46,6 +45,18 @@ public class EmployeePayrollService {
         if (ioService.equals(IOService.DB_IO))
             this.employeePayrollDataList=employeePayrollDBService.reteriveDate(startDate,endDate);
         return this.employeePayrollDataList;
+    }
+
+    public int readEmployeeDataWtihGivenSalary(double salary) throws DBException {
+        int result=employeePayrollDBService.reteriveSalary(salary);
+        if (result==0){
+            try {
+                throw new SQLUpdateFailedException("Query is failed.");
+            } catch (SQLUpdateFailedException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     public void updateEmployeeSalary(String name, double salary) {

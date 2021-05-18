@@ -49,16 +49,31 @@ public class EmployeePayrollDBService {
     }
 
     public List<EmployeePayrollData> reteriveDate(LocalDate startDate, LocalDate endDate) throws DBException {
-        String sql=String.format("select * from employee_payroll where start between '%s' and '%s';",startDate,endDate);
-        List<EmployeePayrollData> employeePayrollDataList=new ArrayList<>();
-        try(Connection connection=this.getConnection()){
-            Statement statement=connection.createStatement();
-            ResultSet resultSet=statement.executeQuery(sql);
-            employeePayrollDataList=this.employeePayrollData(resultSet);
+        String sql = String.format("select * from employee_payroll where start between '%s' and '%s';", startDate, endDate);
+        List<EmployeePayrollData> employeePayrollDataList = new ArrayList<>();
+        try (Connection connection = this.getConnection()) {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            employeePayrollDataList = this.employeePayrollData(resultSet);
         } catch (SQLException throwables) {
             throw new DBException("Connection is failed", DBException.ExceptionType.CONNECTION_FAIL);
         }
         return employeePayrollDataList;
+    }
+
+    public int reteriveSalary(double salary) throws DBException {
+        String sql=String.format("select count(*) as Count from employee_payroll where salary=%.2f;",salary);
+        int count = 0;
+        try(Connection connection=this.getConnection()){
+            Statement statement=connection.createStatement();
+            ResultSet resultSet=statement.executeQuery(sql);
+            while (resultSet.next()){
+                count=resultSet.getInt("Count");
+            }
+        } catch (SQLException throwables) {
+            throw new DBException("Connection is failed", DBException.ExceptionType.CONNECTION_FAIL);
+        }
+        return count;
     }
 
     public List<EmployeePayrollData> getEmployeePayrollData(String name) throws DBException {
