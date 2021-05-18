@@ -1,5 +1,6 @@
 package com.employeepayroll;
 
+import com.employeepayroll.exceptions.DBException;
 import com.employeepayroll.modal.EmployeePayrollData;
 import com.employeepayroll.payrollservice.EmployeePayrollService;
 import org.junit.jupiter.api.Assertions;
@@ -30,5 +31,14 @@ public class EmployeePayrollServiceTest {
         EmployeePayrollService employeePayrollService = new EmployeePayrollService();
         List<EmployeePayrollData> employeePayrollData = employeePayrollService.readEmployeePayrollData(DB_IO);
         Assertions.assertEquals(5, employeePayrollData.size());
+    }
+
+    @Test
+    public void givenNewSalaryForEmployee_WhenUpdated_ShouldMatch() throws DBException {
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        List<EmployeePayrollData> employeePayrollData=employeePayrollService.readEmployeePayrollData(DB_IO);
+        employeePayrollService.updateEmployeeSalary("Terisa",3000000.00);
+        boolean result=employeePayrollService.checkEmployeePayrollInSyncWithDB("Terisa");
+        Assertions.assertTrue(result);
     }
 }

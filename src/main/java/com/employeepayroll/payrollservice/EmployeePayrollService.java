@@ -1,5 +1,7 @@
 package com.employeepayroll.payrollservice;
 
+import com.employeepayroll.exceptions.DBException;
+import com.employeepayroll.exceptions.SQLUpdateFailedException;
 import com.employeepayroll.ioservice.EmployeePayrollDBService;
 import com.employeepayroll.ioservice.FileIOService;
 import com.employeepayroll.modal.EmployeePayrollData;
@@ -9,30 +11,55 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
-
     public enum IOService {
         CONSOLE_IO, FILE_IO, DB_IO, REST_IO
     }
 
     public static final Scanner SC = new Scanner(System.in);
-    private List<EmployeePayrollData> employeeList;
+    private List<EmployeePayrollData> employeePayrollDataList;
 
     public EmployeePayrollService() {
-        this.employeeList = new ArrayList<EmployeePayrollData>();
+        this.employeePayrollDataList = new ArrayList<EmployeePayrollData>();
     }
 
     public EmployeePayrollService(List<EmployeePayrollData> employeeList) {
-        this.employeeList = employeeList;
+        this.employeePayrollDataList = employeeList;
     }
 
     public int sizeOfEmployeeList() {
-        return this.employeeList.size();
+        return this.employeePayrollDataList.size();
     }
 
     public List<EmployeePayrollData> readEmployeePayrollData(IOService ioService) {
         if (ioService.equals(IOService.DB_IO))
-            this.employeeList = new EmployeePayrollDBService().readData();
-        return this.employeeList;
+            this.employeePayrollDataList = new EmployeePayrollDBService().readData();
+        return this.employeePayrollDataList;
+    }
+
+    public void updateEmployeeSalary(String name, double salary) {
+        int result=new EmployeePayrollDBService().updateEmployeeData(name,salary);
+        if(result==0) {
+            try {
+                throw new SQLUpdateFailedException("Query is failed.");
+            } catch (SQLUpdateFailedException e) {
+                e.printStackTrace();
+            }
+        }
+        EmployeePayrollData employeePayrollData=this.getEmployeePayrollData(name);
+        if (employeePayrollData!=null) employeePayrollData.salary=salary;
+
+    }
+
+    private EmployeePayrollData getEmployeePayrollData(String name) {
+        return this.employeePayrollDataList.stream()
+                .filter(employeePayrollDataItem -> employeePayrollDataItem.employeeName.equals(name))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public boolean checkEmployeePayrollInSyncWithDB(String name) throws DBException {
+        List<EmployeePayrollData> employeePayrollDataList=new EmployeePayrollDBService().getEmployeePayrollData(name);
+        return employeePayrollDataList.get(0).equals(getEmployeePayrollData(name));
     }
 
 
@@ -46,18 +73,18 @@ public class EmployeePayrollService {
             System.out.println("Enter employee salary:");
             double employeeSalary = SC.nextDouble();
             EmployeePayrollData newEmployee = new EmployeePayrollData(employeeId, employeeName, employeeSalary);
-            employeeList.add(newEmployee);
+            employeePayrollDataList.add(newEmployee);
         } else if (ioType.equals(IOService.FILE_IO)) {
-            this.employeeList = new FileIOService().readData();
+            this.employeePayrollDataList = new FileIOService().readData();
         }
     }
 
     public void writeEmployeeData(IOService ioType) {
         if (ioType.equals(IOService.CONSOLE_IO)) {
-            for (EmployeePayrollData o : employeeList)
+            for (EmployeePayrollData o : employeePayrollDataList)
                 System.out.println(o.toString());
         } else if (ioType.equals(IOService.FILE_IO)) {
-            new FileIOService().writeData(employeeList);
+            new FileIOService().writeData(employeePayrollDataList);
         }
     }
 
