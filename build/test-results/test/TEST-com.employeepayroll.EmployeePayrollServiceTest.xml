@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.employeepayroll.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-18T10:45:47" hostname="HACKERNAMAN" time="0.458">
+<testsuite name="com.employeepayroll.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-19T11:42:09" hostname="HACKERNAMAN" time="0.538">
   <properties/>
-  <testcase name="givenEmployeeDetail_WhenAdded_ShowSyncWithDB()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.458"/>
+  <testcase name="givenEmployeeDetail_WhenAdded_ShowSyncWithDB()" classname="com.employeepayroll.EmployeePayrollServiceTest" time="0.538"/>
   <system-out><![CDATA[Connecting to database:jdbc:mysql://localhost:3307/payroll_service
 Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@58014af6
 Connecting to database:jdbc:mysql://localhost:3307/payroll_service
-Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@4723e3c2
+Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@337bb3c8
 Connecting to database:jdbc:mysql://localhost:3307/payroll_service
-Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@3f18b0a4
+Connection is successful...!!!!com.mysql.cj.jdbc.ConnectionImpl@5e863c84
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
